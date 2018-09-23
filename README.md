@@ -117,13 +117,13 @@ vim gcp.tf
 gcp.tf
 
 ```
-resource "google_compute_instance" "lucas" {
+resource "google_compute_instance" "test-gcp" {
 
   name         = "lucasko"
   zone         = "asia-east1-b"
   machine_type = "n1-standard-1"
 
-  tags = [ "lucas"]
+  tags = [ "mylucas"]
 
   boot_disk {
         initialize_params {
@@ -131,8 +131,13 @@ resource "google_compute_instance" "lucas" {
             type  = "pd-ssd"
             size = 40
         }
-        auto_delete = false
     }
+
+  network_interface {
+    network = "default"
+  }
+
+
 }
 
 ```
